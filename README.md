@@ -15,3 +15,33 @@ Tool search for all the files in the selected root directory and tries to find t
 </p>
 
 <p>If you need only the binary, it's in the <b>bin</b> folder. Otherwise, you can clone the repository and compile it yourself (C# project for .Net framework 4.8+). If you like, please modify or enhance the code. Use at your own risk, I take no responsibility.</p>
+
+
+<p><b>Text search code between tags:</b></p>
+
+<p>
+  
+```
+
+
+        string getCleanName(string fileName)
+        {
+            string markS = textBoxStart.Text;
+            string markE = textBoxEnd.Text;
+
+            int start = fileName.LastIndexOf(markS);
+            int end = fileName.LastIndexOf(markE);
+
+            if (start >= 0 && end >= 0)
+            {
+                int length = fileName.LastIndexOf(markE) + markE.Length - start;
+                var textToReplace = fileName.Substring(start, length);
+                return fileName.Replace(textToReplace, "");
+            }
+
+            return fileName;
+        }
+
+```
+
+</p>
